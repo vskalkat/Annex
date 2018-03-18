@@ -1,7 +1,7 @@
 {
   "name": "annex",
   "version": "1.0.0",
-  "description": "connecing students for FYDP since 2018",
+  "description": "connecting students for FYDP since 2018",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,5 +15,24 @@
   "bugs": {
     "url": "https://github.com/vskalkat/Annex/issues"
   },
-  "homepage": "https://github.com/vskalkat/Annex#readme"
+  "homepage": "https://github.com/vskalkat/Annex#readme",
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.1.1",
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "morgan": "~1.9.0",
+    "pug": "2.0.0-beta11",
+    "serve-favicon": "~2.4.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "proxy": "http://localhost:8080"
 }
