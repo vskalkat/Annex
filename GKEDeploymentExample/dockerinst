@@ -1,0 +1,9 @@
+docker build -t hello-world-image . 
+docker build -t gcr.io/syde-project/hello-world-image:v1 .
+gcloud docker -- push gcr.io/syde-project/hello-world-image:v1
+
+
+
+docker build -t gcr.io/syde-project/hello-world-a:v1 .
+gcloud docker -- push gcr.io/syde-project/hello-world-a:v1
+kubectl apply -f deployment.yml

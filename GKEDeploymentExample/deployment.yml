@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: syde-project-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:  
+        app: syde-project  
+    spec:     # pod spec                  
+      containers: 
+      - name: syde-project
+        image: gcr.io/syde-project/hello-world-a:v1 # image we pushed
+        imagePullPolicy: "Always"
+        ports:
+        - containerPort: 3000
