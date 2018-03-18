@@ -1,0 +1,19 @@
+{
+  "name": "annex",
+  "version": "1.0.0",
+  "description": "connecing students for FYDP since 2018",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vskalkat/Annex.git"
+  },
+  "author": "Saif, Vik, Archie, and Chenlei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vskalkat/Annex/issues"
+  },
+  "homepage": "https://github.com/vskalkat/Annex#readme"
+}
