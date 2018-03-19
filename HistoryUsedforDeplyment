@@ -1,0 +1,330 @@
+ 231  docker build -t hello-world-image . 
+  232  docker run --name hello-world -p 3000:3000 hello-world-image
+  233  curl http://localhost:3000/
+  234  docker build -t gcr.io/{PROJECT_ID}/hello-world-imagee:v1 .
+  235  docker build -t gcr.io/syde-project/hello-world-imagee:v1 .
+  236  gcloud docker -- push gcr.io/syde-project/hello-world-imagee:v1
+  237   kubectl create -f deployment.yml --save-config
+  238  kubectl get pods
+  239  kubectl get services
+  240  docker build -t hello-world-imagee . 
+  241  docker run --name hello-worldd -p 3000:3000 
+  242  docker run --name hello-world -p 3000:3000 hello-world-image:latest
+  243  docker run --name hello-world:latest -p 3000:3000 hello-world-image:latest
+  244  docker run --name hello-worl -p 3000:3000 hello-world-imag
+  245  docker build -t hello-world-imag . 
+  246  docker run --name hello-worl -p 3000:3000 hello-world-imag
+  247  docker run --name hello-worl -p 3000:3000 hello-world-imag
+  248  docker run --name hello-worl -p 3000:3000 hello-world-imag
+  249  docker build -t hello-world-imag . 
+  250  docker run --name hello-worl -p 3000:3000 hello-world-imag
+  251  docker run --name hello-wor -p 3000:3000 hello-world-ima
+  252  docker build -t hello-world-ima . 
+  253  docker run --name hello-wor -p 3000:3000 hello-world-ima
+  254  docker run --name hello-wor -p 3001:3001 hello-world-ima
+  255  docker containors
+  256  docker --help
+  257  docker container
+  258  docker ps
+  259  docker kill 46386782894e
+  260  docker run --name hello-wor -p 3001:3001 hello-world-ima
+  261  docker run --name hello-wor -p 3000:3000 hello-world-ima
+  262  docker build -t syde-image . 
+  263  docker run --name syde -p 3000:3000 syde-image
+  264  gcloud container clusters create syde --zone {ZONE} 
+  265  gcloud container clusters create syde --zone us-east1-b
+  266  gcloud container clusters create syde-proj --zone us-east1-b
+  267  gcloud container clusters create sydep --zone us-east1-b
+  268  gcloud container clusters create syde-proj --zone us-east1-b --machine-type f1-micro 
+  269  gcloud container clusters create syde-cluster --zone us-east1-b --machine-type f1-micro 
+  270  gcloud container clusters get-credentials hello-world-cluster --zone us-east1-b
+  271  docker build -t gcr.io/syde-project/hello-world-image:v1 .
+  272  gcloud docker -- push gcr.io/syde-project/hello-world-image:v1
+  273  kubectl get services
+  274  docker-compose ps
+  275  docker-compose ps
+  276  ls
+  277  docker-compose ps
+  278  kubectl create -f deployment.yml --save-config
+  279  kubectl apply -f deployment.yaml
+  280  kubectl apply -f deployment.yml
+  281  kubectl apply -f deployment.yml
+  282  kubectl apply -f deployment.yml
+  283  kubectl apply -f deployment.yml
+  284  kubectl get services
+  285  kubectl get services
+  286  gcloud docker -- push gcr.io/{PROJECT_ID}/hello-world-i:v1
+  287  gcloud docker -- push gcr.io/syde-project/hello-world-i:v1
+  288  docker build -t hello-world-i .
+  289  docker build -t gcr.io/syde-project/hello-world-i:v1 .
+  290  gcloud docker -- push gcr.io/syde-project/hello-world-i:v1
+  291  kubectl apply -f deployment.yml
+  292  kubectl ps
+  293  kubectl --help
+  294  kubectl --help
+  295  gcloud --help
+  296  kubectl get pods
+  297  kubectl logs syde-project-deployment-3527678126-nz6hk
+  298  kubectl get pods
+  299  kubectl ps
+  300  kubectl cp
+  301  kubectl get pods
+  302  kubectl apply -f deployment.yml
+  303  docker run --name hello-worl -p 3000:3000 hello-world-a
+  304  docker build -t gcr.io/syde-project/hello-world-a:v1 .
+  305  gcloud docker -- push gcr.io/syde-project/hello-world-a:v1
+  306  kubectl apply -f deployment.yml
+  307  docker build -t gcr.io/syde-project/hello-world-a:v1 .
+  308  gcloud docker -- push gcr.io/syde-project/hello-world-a:v1
+  309  kubectl apply -f deployment.yml
+  310  kubectl apply -f deployment.yml
+  311  pwd
+  312  cd ..
+  313  cd ..
+  314  ls
+  315  cd SYDE322/AlgoPractice/
+  316  ls
+  317  pwd
+  318  python SquareSoln 
+  319  python SquareSoln 
+  320  python SquareSoln pwd
+  321  ls
+  322  vi CheckIfBST
+  323  python
+  324  pwd
+  325  ls
+  326  cd Developer/
+  327  pwd
+  328  ls
+  329  cd /Users/saifkhan/Documents/3B\ Notes/SYDE322 
+  330  pwd
+  331  ls
+  332  pwd
+  333  ls
+  334  pwd
+  335  ls
+  336  git clone git@github.com:vskalkat/booleanExpressionCalculator.git
+  337  ls
+  338  cd booleanExpressionCalculator/
+  339  pwd
+  340  ls
+  341  open calculator.html 
+  342  open calculator.html 
+  343  open .
+  344  pwd
+  345  ls
+  346  node restDemo2.js 
+  347  node restDemo2.js 
+  348  node restDemo2.js 
+  349  npm install
+  350  ls
+  351  node restDemo2.js 
+  352  npm install
+  353  pwd
+  354  ls
+  355  npm install courses.json 
+  356  sudo npm install
+  357  ls
+  358  cat courses.json 
+  359  npm install express
+  360  npm body-parser
+  361  sudo npm body-parser
+  362  sudo npm install body-parser
+  363  npm install fs
+  364  node restDemo2.js 
+  365  node restDemo2.js 
+  366  node restDemo2.js 
+  367  node restDemo2.js 
+  368  node restDemo2.js 
+  369  node restDemo2.js 
+  370  node restDemo2.js 
+  371  node restDemo2.js 
+  372  node restDemo2.js 
+  373  node restDemo2.js 
+  374  node restDemo2.js 
+  375  node restDemo2.js 
+  376  node restDemo2.js 
+  377  node restDemo2.js 
+  378  pwd
+  379  ls
+  380  git add .
+  381  git commit -m 'Added stuff'
+  382  pwd
+  383  ls
+  384  pwd
+  385  ls
+  386  git branch
+  387  git push origin master
+  388  pwd
+  389  ls
+  390  node restDemo2.js 
+  391  node restDemo2.js 
+  392  node restDemo2.js 
+  393  node restDemo2.js 
+  394  pwd
+  395  ls
+  396  git add .
+  397  git commit -m 'Added stuff'
+  398  git branch
+  399  git push origin master
+  400  node restDemo2.js 
+  401  node restDemo2.js 
+  402  node restDemo2.js 
+  403  node restDemo2.js 
+  404  pwd
+  405  ls
+  406  git add .
+  407  git commit -m 'fix bugs'
+  408  git push origin master
+  409  pwd
+  410  ls
+  411  git pull origin master
+  412  pwd
+  413  ls
+  414  node restDemo2.js 
+  415  node restDemo2.js 
+  416  node restDemo2.js 
+  417  node restDemo2.js 
+  418  node restDemo2.js 
+  419  node restDemo2.js 
+  420  node restDemo2.js 
+  421  node restDemo2.js 
+  422  node restDemo2.js 
+  423  node restDemo2.js 
+  424  node restDemo2.js 
+  425  node restDemo2.js 
+  426  node restDemo2.js 
+  427  node restDemo2.js 
+  428  node restDemo2.js 
+  429  node restDemo2.js 
+  430  node restDemo2.js 
+  431  node restDemo2.js 
+  432  node restDemo2.js 
+  433  node restDemo2.js 
+  434  node restDemo2.js 
+  435  node restDemo2.js 
+  436  node restDemo2.js 
+  437  node restDemo2.js 
+  438  node restDemo2.js 
+  439  node restDemo2.js 
+  440  node restDemo2.js 
+  441  pwd
+  442  ls
+  443  cd /Users/saifkhan/Documents/3B\ Notes/SYDE322/booleanExpressionCalculator/restDemo2.js 
+  444  cd /Users/saifkhan/Documents/3B\ Notes/SYDE322/booleanExpressionCalculator
+  445  pwd
+  446  ls
+  447  pwd
+  448  ls
+  449  node restDemo2.js 
+  450  node restDemo2.js 
+  451  node restDemo2.js 
+  452  node restDemo2.js 
+  453  node restDemo2.js 
+  454  node restDemo2.js 
+  455  node restDemo2.js 
+  456  node restDemo2.js 
+  457  node restDemo2.js 
+  458  node restDemo2.js 
+  459  node restDemo2.js 
+  460  node restDemo2.js 
+  461  node restDemo2.js 
+  462  node restDemo2.js 
+  463  node restDemo2.js 
+  464  node restDemo2.js 
+  465  node restDemo2.js 
+  466  node restDemo2.js 
+  467  node restDemo2.js 
+  468  node restDemo2.js 
+  469  node restDemo2.js 
+  470  node restDemo2.js 
+  471  node restDemo2.js 
+  472  node restDemo2.js 
+  473  node restDemo2.js 
+  474  pwd
+  475  git add .
+  476  git commit -m 'Caching and algo update'
+  477  git push origin master
+  478  node restDemo2.js 
+  479  node restDemo2.js 
+  480  node restDemo2.js 
+  481  node restDemo2.js 
+  482  node restDemo2.js 
+  483  node restDemo2.js 
+  484  /Users/saifkhan/Documents/3B\ Notes/SYDE322/express-hello-world-master/Dockerfile ; exit;
+  485  /Users/saifkhan/Documents/3B\ Notes/SYDE322/Annex/Dockerfile ; exit;
+  486  /Users/saifkhan/Documents/3B\ Notes/SYDE322/Annex/Dockerfile ; exit;
+  487  docker --help
+  488  docker info
+  489  docker ps
+  490  docker kill 91b3734199b9
+  491  docker kill fed852421f42
+  492  gcloud container clusters create annex-cluster --zone us-east1-b --machine-type f1-micro 
+  493  gcloud container clusters create annex-cluster --zone us-east1-b --machine-type f1-micro 
+  494  gcloud container clusters get-credentials annex-cluster --zone us-east1-b 
+  495  gcloud docker -- push gcr.io/annex-project/fydp:v1
+  496  gcloud docker -- push gcr.io/annex-project/fydp:v1
+  497  gcloud docker -- push gcr.io/annex-project/fydp:v1
+  498  gcloud docker -- push gcr.io/annex-project/fydp:v1
+  499  gcloud config set project crafty-key-198523
+  500  gcloud docker -- push gcr.io/annex-project/fydp:v1
+  501  gcloud config set project elegant-racer-198523
+  502  gcloud docker -- push gcr.io/annex-project/fydp:v1
+  503  gcloud config set project crafty-key-198523
+  504  docker build -t gcr.io/crafty-key-198523/fydp:v1
+  505  docker build -t gcr.io/crafty-key-198523/fydp:v1 .
+  506  gcloud docker push gcr.io/crafty-key-198523/fydp:v1 
+  507  gcloud docker -- push gcr.io/crafty-key-198523/fydp:v1 
+  508  pwd
+  509  ls
+  510  pw
+  511  pwd
+  512  ls
+  513  pwd
+  514  kubectl create -f deployment.yml --save-config
+  515  kubectl get deployments
+  516  kubectl logs annex-project-deployment
+  517  kubectl logs annex-project-deployment
+  518  kubectl get deployments
+  519  kubectl get pods
+  520  kubectl get pods
+  521  kubectl logs annex-project-deployment-6b96b746b4-bgkbx
+  522  gcloud docker -- push gcr.io/crafty-key-198523/fydp:v1 
+  523  gcloud docker -- push gcr.io/crafty-key-198523/fydp:v1 
+  524  kubectl create -f deployment.yml --save-config
+  525  kubectl create -f deployment.yml --save-config
+  526  kubectl help
+  527  kubectl set -f deployment.yml --save-config
+  528  kubectl apply -f deployment.yml --save-config
+  529  kubectl create -f deployment.yml --save-config
+  530  kubectl create -f deployment.yml 
+  531  kubectl delete -f deployment.yml
+  532  kubectl create -f deployment.yml --save-config
+  533  kubectl get pods
+  534  kubectl get pods
+  535  kubectl get pods
+  536  kubectl get pods
+  537  kubectl get pods
+  538  kubectl get pods
+  539  kubectl get pods
+  540  kubectl get pods
+  541  kubectl get pods
+  542  kubectl get pods
+  543  kubectl get pods
+  544  kubectl get pods
+  545  kubectl get pods
+  546  kubectl get pods
+  547  kubectl get pods
+  548  kubectl get pods
+  549  kubectl get pods
+  550  kubectl get pods
+  551  kubectl get pods
+  552  kubectl get pods
+  553  kubectl logs annex-project-deployment-64777bc57d-zt4k8
+  554  kubectl expose deployment hello-world-deployment --type="LoadBalancer"
+  555  kubectl expose deployment annex-project-deployment --type="LoadBalancer"
+  556  kubectl get services
+  557  kubectl get services
+  558  kubectl get services
+  559  kubectl get services
+  560  kubectl get services
