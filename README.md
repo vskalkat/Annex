@@ -8,7 +8,7 @@ npm install
 ```
 Run the following in root folder to start server
 ```
-node ./server/app.js
+node ./server/server.js
 ```
 Then run the following in root folder to start client
 ```

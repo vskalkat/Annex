@@ -1,7 +1,8 @@
 -- if the commands doesn't work because of Invalid default value error,
 -- run SET SQL_MODE='ALLOW_INVALID_DATES';
+create database annex;
 
-CREATE TABLE `Profile`
+CREATE TABLE `Profiles`
 (
    `user_id`  integer not null auto_increment primary key,
    `email`     VARCHAR(50) NOT NULL,
@@ -16,7 +17,7 @@ CREATE TABLE `Profile`
    `fb_token` VARCHAR(200)
 );
 
-CREATE TABLE `Project`
+CREATE TABLE `Projects`
 (
   `project_id` integer not null auto_increment primary key,
   `title` VARCHAR(100) NOT NULL,
@@ -24,10 +25,13 @@ CREATE TABLE `Project`
   `created_by`  integer not null,
   `created_at`    TIMESTAMP default now(),
   `deleted_at`    TIMESTAMP,
-  `last_edit` timestamp default now() on update now()
+  `last_edit` timestamp default now() on update now(),
+  CONSTRAINT `Constr_Project_user_fk`
+      FOREIGN KEY `user_fk` (`created_by`) REFERENCES `Profile` (`user_id`)
+      ON UPDATE CASCADE
 );
 
-CREATE TABLE `Interest` (
+CREATE TABLE `Interests` (
     `project_id` INT NOT NULL,
     `user_id` INT NOT NULL,
     PRIMARY KEY (`user_id`, `project_id`),
@@ -39,4 +43,8 @@ CREATE TABLE `Interest` (
         ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-insert into profile(name, email, hash, salt) values('admin', 'shenchenlei@gmail.com', 'abc', 'adminsalt');
+-- for testing purposes, don't have to run
+insert into profiles(name, email, hash, salt) values('admin', 'shenchenlei@gmail.com', 'abc', 'adminsalt');
+insert into projects(title, description, created_by) values('project1', 'test project 1', 1);
+insert into projects(title, description, created_by) values('project2', 'test project 2', 1);
+insert into projects(title, description, created_by) values('project3', 'test project 3', 1);
