@@ -1,0 +1,7 @@
+{
+  "server" : "localhost",
+  "userName" : "root",
+  "password" : "root",
+  "databaseName" : "annex",
+  "port" : 5432
+}

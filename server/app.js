@@ -5,8 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
+// var index = require('./routes/index');
+// var users = require('./routes/users');
 
 var app = express();
 
@@ -22,7 +22,7 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'pass',
+  password : 'pakistan',
   database : 'my_db'
 });
 
@@ -91,6 +91,12 @@ function createSchema(con) {
       con.query(sql, function (err, result) {
         if (err) throw err;
         console.log("Expression Table created");
+      });
+
+      sql = "CREATE TABLE IF NOT EXISTS projects (id INT PRIMARY KEY AUTO_INCREMENT, creator_email VARCHAR(255), title VARCHAR(255), description VARCHAR(255))";
+      con.query(sql, function (err, result) { 
+        if (err) throw err;
+        console.log("Projects Table created");
       });
 
       createDefaultUsers(con);
@@ -200,6 +206,62 @@ app.post('/signUp', function (req, res) {
 
 })
 
+app.get('/projects', function (req, res) {
+
+    var sql = "SELECT * FROM projects";
+    connection.query(sql, function (err, result) {
+      if(err) {
+        listener(false);
+        console.log("errored out " + err);
+        return;
+      } else {
+         res.send(result);
+         console.log("Expression retrieved " + result + " with err " + err + " where query was " + sql);
+      }
+    });
+})
+
+app.get('/project/:projectId', function (req, res) {
+   
+    var sql = "SELECT * FROM projects WHERE id = " + req.params.projectId;
+    connection.query(sql, function (err, result) {
+      if(err) {
+        listener(false);
+        console.log("errored out " + err);
+        return;
+      } else {
+         res.send(result[0]);
+         console.log("Projects retrieved " + result + " with err " + err + " where query was " + sql);
+      }
+    });
+})
+
+app.post('/project', function (req, res) {
+    var title = req.body.title;
+    var description = req.body.description;
+    var email = req.body.email;
+
+    var sql = "INSERT INTO projects (creator_email, title, description) VALUES ('" + email + "', '" + title + "','" + description + "'');";
+    connection.query(sql, function (err, result) {
+      console.log("Project added " + result + " with err " + err);
+    });
+})
+
+
+app.get('search/project/:query', function (req, res) {
+   
+    var sql = "SELECT * FROM projects WHERE CONTAINS(description," + req.params.query + ")";
+    connection.query(sql, function (err, result) {
+      if(err) {
+        listener(false);
+        console.log("errored out " + err);
+        return;
+      } else {
+         res.send(result[0]);
+         console.log("Search retreived " + result + " with err " + err + " where query was " + sql);
+      }
+    });
+})
 
 function isValidEmail(email){
   return (email && email.length > 0);
