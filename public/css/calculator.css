@@ -1,0 +1,162 @@
+body {
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Avenir, Raleway-SemiBold;
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+}
+
+.navbar-light .navbar-brand {
+  font-family: 'Impact', 'Charcoal', sans-serif;
+  letter-spacing: 2px;
+  color: #7DBBE6;
+  font-size: 30px;
+}
+
+.btn-primary {
+  font-family: Raleway-SemiBold;
+  font-size: 13px;
+  color: rgba(58, 133, 191, 0.75);
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid rgba(58, 133, 191, 0.75);
+  border-radius: 40px;
+  background: white;
+  transition: all 0.3s ease 0s;
+}
+
+.btn-primary.logoutbtn {
+  font-family: Raleway-SemiBold;
+  font-size: 13px;
+  color: red;
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid red;
+  border-radius: 40px;
+  background: white;
+  transition: all 0.3s ease 0s;
+}
+
+.btn-primary:hover {
+  color: #FFF;
+  background: rgba(58, 133, 191, 0.75);
+  border: 2px solid rgba(58, 133, 191, 0.75);
+}
+
+.btn-primary.logoutbtn:hover {
+  color: #FFF;
+  background: red;
+  border: 2px solid red;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle  {
+  background: #7DBBE6;
+  border: 2px solid #7DBBE6;
+}
+
+.btn-primary.logoutbtn:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle  {
+  background: red;
+  border: 2px solid red;
+}
+
+.headerText {
+  font-weight:700;
+  color: #666666;
+  font-size:1rem;
+}
+
+header.inputSection {
+  position: relative;
+  background-color: #7DBBE6;
+  background: url("../img/bluebackground.jpg") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+header.inputSection .overlay {
+  position: absolute;
+  background-color: #212529;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.2;
+}
+
+header.inputSection h1 {
+  font-size: 2rem;
+}
+
+.solution {
+  background-color: #f5f5f5;
+  border: solid 2px ##EEEEEE;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.1), 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
+}
+.solution#output {
+  padding-bottom: 2rem;
+}
+
+.btn-secondary{
+  opacity: 0.5;
+}
+
+@media (min-width: 768px) {
+  header.inputSection h1 {
+    font-size: 3rem;
+  }
+}
+
+.showcase .showcase-text {
+  padding: 3rem;
+}
+
+.showcase .showcase-img {
+  min-height: 30rem;
+  background-size: cover;
+}
+
+@media (min-width: 768px) {
+  .showcase .showcase-text {
+    padding: 7rem;
+  }
+}
+
+.projectsList{
+  padding-top:40px;
+  width:100%;
+}
+
+.projectItem{
+  padding-top:10px;
+  padding-bottom:10px;
+  cursor:pointer;
+}
+.projectItem:hover{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.projectTitle{
+  color: #7DBBE6;
+}
+
+.projectDescription{
+  color: #979797;
+}

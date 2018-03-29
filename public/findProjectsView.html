@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Annex</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!--Javascript files -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="findProjectsView.js"></script>
+
+    <!--Modal Library-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+    <!-- Custom styles -->
+    <link href="css/calculator.css" rel="stylesheet">
+
+  </head>
+
+  <body style="background-color:#F3F4F4;">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-light bg-light static-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">annex</a>
+        <ul class="navbar nav navbar-right">
+          <li style="margin-left:10px;"><a href="findProjectsView.html"><button class="btn btn-primary active"></span> Find Projects</button></a></li>
+          <li style="margin-left:10px;"><a href="findStudentsView.html"><button class="btn btn-primary"> Find Students</button></a></li>
+          <li style="margin-left:10px;"><a href="manageProfile.html"><button class="btn btn-primary"> Manage Profile</button></a></li>
+          <li style="margin-left:10px;"><a href="messagesView.html"><button class="btn btn-primary"><i class="fa fa-comments" style="font-size:20px"></i></button></a></li>
+          <li style="margin-left:10px;"><a href="loginView.html"><button class="btn btn-primary logoutbtn">Logout</button></a></li>
+        </ul>
+      </div>
+    </nav>
+
+
+    <!-- Input Section -->
+      <div class="container">
+        <div class="row">
+          <div style="margin:auto;" >
+            <ul class="list-group projectsList">
+              <a style="text-decoration:none;" href="#projectModal" rel="modal:open">
+                <li class="list-group-item projectItem">
+                  <h3 class="projectTitle">Project Title</h3>
+                  <p class="projectDescription">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip...
+                  </p>
+                </li>
+              </a>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Modal Window -->
+      <div id="projectModal" class="modal">
+        <h3 class="projectTitle">Project Title</h3>
+        <p class="projectDescription">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip...
+        </p>
+      </div>
+
+
+  </body>
+
+</html>
