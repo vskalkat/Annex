@@ -30,16 +30,16 @@ createSchema(connection);
 
 app.use(bodyParser.json());
 
-app.use("", express.static(__dirname + ""));
+app.use(express.static("public"));
 
-app.get('/ ', (req, res) => { //anonymous function
-  console.log("GET request received for root");
-  res.sendFile(__dirname + '../public/loginView.html');
+app.get('/', (req, res) => { //anonymous function
+  console.log("GET request received for root"); // file:///Users/saifkhan/Documents/3B%20Notes/SYDE322/Annex/public/findProjectsView.html
+  res.sendfile(__dirname + '/public/loginView.html');
 })
 
-app.get('/calculator', (req, res) => { //anonymous function
-  console.log("GET request received for calculator page");
-  res.sendFile(__dirname + '../public/calculator.html');
+app.get('/projects', (req, res) => { //anonymous function
+  console.log("Loading Projects");
+  res.sendFile(__dirname + '/public/findProjectsView.html');
 })
 
 const saltRounds = 10;

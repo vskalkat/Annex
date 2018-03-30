@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Simplify boolean expressions and see the steps.">
+    <meta name="author" content="Saif Khan - Vik Kalakt">
+
+    <title>Boolean Simplifier</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!--Javascript files -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="calculatorView.js"></script>
+
+    <!-- Custom styles -->
+    <link href="css/calculator.css" rel="stylesheet">
+
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-light bg-light static-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Boolean Expression Simplifier</a>
+        <ul class="navbar nav navbar-right">
+          <li id="logoutBtn" style="margin-right:10px;"><a style="cursor:pointer;"><span class="glyphicon glyphicon-log-in"></span> Log-out </a></li>
+          <li style="margin-left:10px;"><a href="public/signUpView.html"><button class="btn btn-primary"><span class="glyphicon glyphicon-user"></span> Sign Up!</button></a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container instructions" style="margin:10px auto 10px auto;">
+          <div class="col-xl-9 mx-auto my-auto showcase-text">
+            <p class="headerText">Instructions</p>
+            <ul class="list-group">
+              <li class="list-group-item ">1. Insert your boolean expression</li>
+              <li class="list-group-item ">2. Click Simplify!</li>
+              <li class="list-group-item ">3. View your simplified boolean expression in the "Solution" box on the output screen.</li>
+              <li class="list-group-item ">4. View the minterms in the "Minterms" box on the output screen.</li>
+              <li class="list-group-item ">5. View the steps in the "Steps" box on the output screen.</li>
+            </ul>
+          </div>
+    </div>
+
+    <!-- Input Section -->
+    <header class="inputSection text-white text-center">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <h1 class="mb-5">Boolean Simplifier</h1>
+          </div>
+          <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+              <div class="row">
+                <div class="col-12 col-md-9 mb-2 mb-md-0">
+                  <input id="expressionField" type="text" class="form-control form-control-lg" placeholder="Enter boolean expression here...">
+                </div>
+                <div class="col-12 col-md-3">
+                  <button id="simplifyBtn" class="btn btn-block btn-lg btn-primary">Simplify!</button>
+                  <button id="historyBtn" class="btn btn-block btn-lg btn-primary">History!</button>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container solution">
+      <p class="headerText">Simplified Expression</h4>
+      <div id="output">
+      </div>
+    </div>
+
+    <!-- Minterms and Steps -->
+    <section class="showcase">
+      <div class="container-fluid p-0">
+        <div class="row no-gutters">
+          <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+            <p class="headerText">Minterms</p>
+            <table id="mindtermsTable" class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <!-- <th scope="col">First</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Handle</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <!-- <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr> -->
+              </tbody>
+            </table>
+          </div>
+          <div class="col-lg-6 order-lg-2 my-auto showcase-text">
+            <p class="headerText">Steps</p>
+            <ul class="list-group">
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </body>
+
+</html>
