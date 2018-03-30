@@ -64,7 +64,7 @@ a {
   border: 2px solid #7DBBE6;
 }
 
-.btn-primary.logoutbtn:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle  {
+.btn-primary.logoutbtn:not(:disabled):not(.disabled).active, .btn-primary.logoutbtn:not(:disabled):not(.disabled):active, .show>.btn-primary.logoutbtn.dropdown-toggle  {
   background: red;
   border: 2px solid red;
 }
@@ -141,7 +141,11 @@ header.inputSection h1 {
 
 .projectsList{
   padding-top:40px;
+  position:absolute;
+  left:0px;
   width:100%;
+  padding-left:100px;
+  padding-right:100px;
 }
 
 .projectItem{
@@ -159,4 +163,25 @@ header.inputSection h1 {
 
 .projectDescription{
   color: #979797;
+}
+
+.modal {
+  max-width:70%;
+  -webkit-box-shadow: 0 0 10px #5689A5;
+  -moz-box-shadow: 0 0 10px #5689A5;
+  -o-box-shadow: 0 0 10px #5689A5;
+  -ms-box-shadow: 0 0 10px #5689A5;
+  box-shadow: 0 0 10px #5689A5;
+}
+
+.blocker{
+  background-color: #7DBBE6;
+  background-color:rgba(125,187,230,0.8);
+}
+
+.modal a.close-modal{
+  top:5px;
+  right:5px;
+  background: url("../img/window-close.png") no-repeat center center;
+  opacity:0.5;
 }
