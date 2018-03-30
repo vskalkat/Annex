@@ -203,7 +203,6 @@ app.post('/signUp', function (req, res) {
   } else {
     res.sendStatus(403);
   }
-
 })
 
 app.get('/projects', function (req, res) {
