@@ -33,7 +33,7 @@ $(document).ready(function(){
              }).done(function(data) {
                console.log("data: " + data.tokenVerified);
                if(data.tokenVerified) {
-                 window.location.href = 'http://localhost:8042/projects';
+                 window.location.href = 'http://localhost:8042/findProjects';
                }
              }).fail(function( data ) {
                 alert('Check your password/email combination');

@@ -37,7 +37,7 @@ app.get('/', (req, res) => { //anonymous function
   res.sendfile(__dirname + '/public/loginView.html');
 })
 
-app.get('/projects', (req, res) => { //anonymous function
+app.get('/findProjects', (req, res) => { //anonymous function
   console.log("Loading Projects");
   res.sendFile(__dirname + '/public/findProjectsView.html');
 })
