@@ -63,8 +63,6 @@ function retrieveUser(email, connection, listener) {
          listener(result);
          console.log("User successfully retreived " + result + " with err " + err + " where query was " + sql);
       }
-
-
     });
 }
 
@@ -76,6 +74,11 @@ function createDefaultUsers(connection) {
 }
 
 function createSchema(con) {
+      
+      con.query("CREATE DATABASE IF NOT EXISTS my_db", function (err, result) {
+        if (err) throw err;
+        console.log("Database created");
+      });
 
       var sql = fs.readFileSync('create_users.sql').toString();
       con.query(sql, function (err, result) {
@@ -96,10 +99,7 @@ function createSchema(con) {
       });
 
 
-      // con.query("CREATE DATABASE IF NOT EXISTS my_db", function (err, result) {
-      //   if (err) throw err;
-      //   console.log("Database created");
-      // });
+   
 
       // var sql = "CREATE TABLE IF NOT EXISTS users (email VARCHAR(255) PRIMARY KEY, password VARCHAR(255), is_premium BOOLEAN, fav_teacher VARCHAR(255))";
       // con.query(sql, function (err, result) {
@@ -250,11 +250,20 @@ app.get('/project/:projectId', function (req, res) {
 })
 
 app.post('/project', function (req, res) {
-    var title = req.body.title;
-    var description = req.body.description;
-    var email = req.body.email;
+    var projectName = req.body.project.projectName;
+    var projectDescription = req.body.project.projectDescription;
+    var programSelect = req.body.project.programSelect;
+    var softwareSkill = req.body.project.softwareSkill;
+    var firmwareSkills = req.body.firmwareSkills;
+    var mechanicalSkills = req.body.mechanicalSkills;
+    var electricalSkills = req.body.electricalSkills;
+    var dataSkills = req.body.dataSkills;
+    var designSkills = req.body.designSkills;
+  
 
-    var sql = "INSERT INTO projects (creator_email, title, description) VALUES ('" + email + "', '" + title + "','" + description + "'');";
+    var sql = "INSERT INTO projects (title, description) VALUES ('" + projectName + "', '" + projectDescription + "');";
+    console.log("Request made:  " + sql);
+
     connection.query(sql, function (err, result) {
       console.log("Project added " + result + " with err " + err);
     });
