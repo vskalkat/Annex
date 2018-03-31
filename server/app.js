@@ -23,7 +23,7 @@ var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : 'root',
-  database : 'annex',
+  database : 'my_db',
   port     : '5432'
 });
 
@@ -241,13 +241,15 @@ app.get('/project/:projectId', function (req, res) {
         console.log("errored out " + err);
         return;
       } else {
-         res.send(result[0]);
+         console.log('result', result[0])
+         res.send(result);
          console.log("Projects retrieved " + result + " with err " + err + " where query was " + sql);
       }
     });
 })
 
 app.post('/project', function (req, res) {
+    var user = req.body.userId;
     var projectName = req.body.project.projectName;
     var projectDescription = req.body.project.projectDescription;
     var programSelect = req.body.project.programSelect;
@@ -259,12 +261,13 @@ app.post('/project', function (req, res) {
     var designSkills = req.body.designSkills;
 
 
-    var sql = "INSERT INTO projects (title, description) VALUES ('" + projectName + "', '" + projectDescription + "');";
+    var sql = "INSERT INTO projects (title, description, user_id) VALUES ('" + projectName + "', '" + projectDescription + "', '" + user + "');";
     console.log("Request made:  " + sql);
 
     connection.query(sql, function (err, result) {
       console.log("Project added " + result + " with err " + err);
       console.log('result', result);
+      res.send(result);
     });
 })
 

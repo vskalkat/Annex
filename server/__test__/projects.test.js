@@ -1,52 +1,92 @@
 const request = require('request');
+const mysql = require('mysql');
 const server = {
   address: 'localhost',
   port: '8042'
 }
-
-var mysql = require('mysql');
-let connection = mysql.createConnection({
+const connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : 'root',
-  database : 'annex',
-  port     : '5432'
+  database : 'my_db',
+  port     : '5432',
+  multipleStatements: true
 });
 
-// it('test get /projects', () => {
-//   request("http://localhost:8042/projects",
-//   { json: true }, (err, res, body) => {
-//     console.log(body);
-//     if (err) { return console.log(err); }
-//     expect(body.length).toEqual(3);
-//   });
-// });
-//
-// it('test get /project/:projectId', () => {
-//   request.get("http://localhost:8042/project/1",
-//   { json: true }, (err, res, body) => {
-//     if (err) { return console.log(err); }
-//     console.log(body);
-//     expect(body.length).toEqual(1);
-//   });
-// });
+beforeAll((done) => {
+  let query = `
+  insert into users(user_id, name, email, password)
+  values(1, 'admin', 'shenchenlei@gmail.com', 'abc');
 
-it('test post /project', (done) => {
-  // let data = '{ "data" {"key1":"what","key2":"what"} }';
-  // let json_obj = JSON.parse(data);
+  insert into projects(project_id, title, description, user_id)
+  values(1, 'project1', 'test project 1', 1);
+
+  insert into projects(project_id, title, description, user_id)
+  values(2, 'project2', 'test project 2', 1);
+
+  insert into projects(project_id, title, description, user_id)
+  values(3, 'project3', 'test project 3', 1);`;
+
+  connection.query(query, (err, result) => {
+    console.log('err', err);
+    done(err);
+  });
+});
+
+afterAll((done) => {
+  connection.query(
+    `DELETE FROM users
+     WHERE email = 'shenchenlei@gmail.com';
+     DELETE FROM projects
+     WHERE title = 'project1' or title = 'project2' or title = 'project3';`);
+});
+
+test('test get /projects', (done) => {
+  request.get("http://localhost:8042/projects",
+  { json: true }, (err, res, body) => {
+    console.log('body', body);
+    if (err) { return console.log(err); }
+    expect(body.length).toEqual(3);
+    done(err);
+  });
+});
+
+test('test get /project/:projectId', (done) => {
+  // new Promise((resolve, reject) => {
+    request.get("http://localhost:8042/project/2",
+      { json: true }, (err, res, body) => {
+        if (err) { console.log(err); }
+        console.log('body', body);
+        // expect(body.project_id).toBe(2);
+        done(err);
+      });
+  // }).then((body) => {
+  //     expect(body.project_id).toBe(2);
+  //     done(err);
+  // });
+});
+
+test('test post /project', (done) => {
   request.post({
     url: "http://localhost:8042/project",
-    body:  { hello : 'hello' }
-  }, { json: true }, (err, res, body) => {
+    body:  {
+      project: {
+          projectName : 'project4',
+          projectDescription : 'test project 4'
+        },
+        userId : 1,
+      },
+    json:  true
+  }, (err, res, body) => {
     if (err) { return console.log(err); }
-    connection.query("SELECT * FROM projects WHERE title = project4",
+    console.log(body);
+    expect(body.affectedRows).toEqual(1);
+    connection.query("DELETE FROM projects WHERE title = 'project4'",
       function (err, result) {
         if(err) {
           console.log("errored out " + err);
           done(err);
         } else {
-          console.log(result);
-          expect(result.length).toEqual(1);
           done(err);
         }
       });
