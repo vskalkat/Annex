@@ -76,30 +76,44 @@ function createDefaultUsers(connection) {
 }
 
 function createSchema(con) {
-      con.query("CREATE DATABASE IF NOT EXISTS my_db", function (err, result) {
-        if (err) throw err;
-        console.log("Database created");
-      });
 
-      var sql = "CREATE TABLE IF NOT EXISTS users (email VARCHAR(255) PRIMARY KEY, password VARCHAR(255), is_premium BOOLEAN, fav_teacher VARCHAR(255))";
+      var sql = fs.readFileSync('create_users.sql').toString();
       con.query(sql, function (err, result) {
         if (err) throw err;
-        console.log("User Table created");
+        console.log("Users created");
       });
 
-      sql = "CREATE TABLE IF NOT EXISTS expressions (id INT PRIMARY KEY AUTO_INCREMENT, user_email VARCHAR(255), input_exp VARCHAR(255) UNIQUE, simplified_exp VARCHAR(255), steps VARCHAR(255))";
+      sql = fs.readFileSync('create_projects.sql').toString();
       con.query(sql, function (err, result) {
         if (err) throw err;
-        console.log("Expression Table created");
+        console.log("Projects created");
       });
 
-      sql = "CREATE TABLE IF NOT EXISTS projects (id INT PRIMARY KEY AUTO_INCREMENT, creator_email VARCHAR(255), title VARCHAR(255), description VARCHAR(255))";
-      con.query(sql, function (err, result) { 
+      sql = fs.readFileSync('create_interests.sql').toString();
+      con.query(sql, function (err, result) {
         if (err) throw err;
-        console.log("Projects Table created");
+        console.log("Interests created");
       });
 
-      createDefaultUsers(con);
+
+      // con.query("CREATE DATABASE IF NOT EXISTS my_db", function (err, result) {
+      //   if (err) throw err;
+      //   console.log("Database created");
+      // });
+
+      // var sql = "CREATE TABLE IF NOT EXISTS users (email VARCHAR(255) PRIMARY KEY, password VARCHAR(255), is_premium BOOLEAN, fav_teacher VARCHAR(255))";
+      // con.query(sql, function (err, result) {
+      //   if (err) throw err;
+      //   console.log("User Table created");
+      // });
+
+      // sql = "CREATE TABLE IF NOT EXISTS projects (id INT PRIMARY KEY AUTO_INCREMENT, creator_email VARCHAR(255), title VARCHAR(255), description VARCHAR(255))";
+      // con.query(sql, function (err, result) { 
+      //   if (err) throw err;
+      //   console.log("Projects Table created");
+      // });
+
+      // createDefaultUsers(con);
 }
 
 app.post('/login', function (req, res) {
