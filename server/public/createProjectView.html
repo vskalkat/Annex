@@ -44,43 +44,63 @@
       </div>
     </nav>
 
-    <!-- Input Section -->
-    <div class="overlay"></div>
-      <div class="row">
-        <div class="col-md-12 col-lg-10 col-xl-8 mx-auto" style="margin:auto;" >
-          <div class="col-12 col-md-9 mb-2 mb-md-0" style="margin:auto;">
-            <input id="emailField" type="text" class="form-control form-control-lg" placeholder="Search project" style="margin:auto; margin-top:50px;">
-            
-          </div>
-        </div>
-      </div>
-
-      <button id="loginBtn" href="calculator.html" class="btn btn-block btn-lg btn-primary col-8 col-md-4 mb-2 mb-md-0" style="margin:auto; margin-top:20px;">Search</button>
-
+      
     <!-- Input Section -->
       <div class="container" >
         <div class="row">
-          <div style="margin:auto;">
+          <div style="margin:10px;">
             <ul class="list-group projectsList">
               <a style="text-decoration:none;" href="#projectModal" rel="modal:open">
                 <li class="list-group-item projectItem">
-                  <h3 class="projectTitle">Project Title</h3>
-                  <p class="projectDescription">
-                    Summary of project. Character limit of 200?
-                  </p>
+                  <h3 class="projectTitle"><center>Create a Project</center></h3>
+                  <form>
+                    Project name:
+                    <input id="input-field" type="text" placeholder="Project name" >
+                    <br/>
+                    <br/>
+                    Project description:
+                    <br/>
+                    <textarea id="input-field" type="text"  placeholder="Project description" rows="4" cols="50"></textarea>
+                    <br/>
+                    <br/>
+                    Your program
+                    <select class="program">
+                      <option value="syde">SYDE</option>
+                      <option value="bme">BME</option>
+                      <option value="tron">TRON</option>
+                      <option value="ele">ELE</option>
+                      <option value="comp">COMP</option>
+                      <option value="cive">CIVE</option>
+                      <option value="mng">MGNT</option>
+                    </select>
+                    <br/>
+                    <br/>
+                    Skills required:
+                    <br/>
+                    <input id="softwareSkill" type="checkbox"> Software 
+                    <br/>
+                    <input id="firmwareSkills" type="checkbox"> Firmware 
+                    <br/>
+                    <input id="mechanicalSkills" type="checkbox"> Mechanical 
+                    <br/>
+                    <input id="electricalSkills" type="checkbox"> Electrical 
+                    <br/>
+                    <input id="dataSkills" type="checkbox"> Data Science 
+                    <br/>
+                    <input id="designSkills" type="checkbox"> Design 
+
+
+                  </form>
+
+                  <button id="submitBtn" href="calculator.html" class="btn btn-block btn-lg btn-primary col-8 col-md-4 mb-2 mb-md-0" style="margin:auto; margin-top:20px;">Submit</button>
+
+
+
                 </li>
               </a>
             </ul>
           </div>
         </div>
-      </div>
-
-      <!-- Modal Window -->
-      <div id="projectModal" class="modal">
-        <h3 class="projectTitle">Project Title</h3>
-        <p class="projectDescription">
-          Full Details of the project go here.
-        </p>
       </div>
 
 
