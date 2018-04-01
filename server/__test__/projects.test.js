@@ -51,19 +51,18 @@ test('test get /projects', (done) => {
   });
 });
 
-test('test get /project/:projectId', (done) => {
-  // new Promise((resolve, reject) => {
+test('test get /project/:projectId', () => {
+  expect.assertions(1);
+  return new Promise((resolve, reject) => {
     request.get("http://localhost:8042/project/2",
       { json: true }, (err, res, body) => {
         if (err) { console.log(err); }
-        console.log('body', body);
-        // expect(body.project_id).toBe(2);
-        done(err);
+        console.log('body', res.body);
+        resolve(body);
       });
-  // }).then((body) => {
-  //     expect(body.project_id).toBe(2);
-  //     done(err);
-  // });
+  }).then((body) => {
+      expect(body.project_id).toEqual(2);
+  });
 });
 
 test('test post /project', (done) => {

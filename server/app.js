@@ -242,7 +242,7 @@ app.get('/project/:projectId', function (req, res) {
         return;
       } else {
          console.log('result', result[0])
-         res.send(result);
+         res.send(result[0]);
          console.log("Projects retrieved " + result + " with err " + err + " where query was " + sql);
       }
     });
