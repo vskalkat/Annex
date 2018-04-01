@@ -22,8 +22,9 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'pakistan',
-  database : 'my_db'
+  password : 'root',
+  database : 'my_db',
+  port     : '5432'
 });
 
 createSchema(connection);
@@ -63,8 +64,6 @@ function retrieveUser(email, connection, listener) {
          listener(result);
          console.log("User successfully retreived " + result + " with err " + err + " where query was " + sql);
       }
-
-
     });
 }
 
@@ -76,6 +75,11 @@ function createDefaultUsers(connection) {
 }
 
 function createSchema(con) {
+
+      con.query("CREATE DATABASE IF NOT EXISTS my_db", function (err, result) {
+        if (err) throw err;
+        console.log("Database created");
+      });
 
       var sql = fs.readFileSync('create_users.sql').toString();
       con.query(sql, function (err, result) {
@@ -95,12 +99,6 @@ function createSchema(con) {
         console.log("Interests created");
       });
 
-
-      // con.query("CREATE DATABASE IF NOT EXISTS my_db", function (err, result) {
-      //   if (err) throw err;
-      //   console.log("Database created");
-      // });
-
       // var sql = "CREATE TABLE IF NOT EXISTS users (email VARCHAR(255) PRIMARY KEY, password VARCHAR(255), is_premium BOOLEAN, fav_teacher VARCHAR(255))";
       // con.query(sql, function (err, result) {
       //   if (err) throw err;
@@ -108,7 +106,7 @@ function createSchema(con) {
       // });
 
       // sql = "CREATE TABLE IF NOT EXISTS projects (id INT PRIMARY KEY AUTO_INCREMENT, creator_email VARCHAR(255), title VARCHAR(255), description VARCHAR(255))";
-      // con.query(sql, function (err, result) { 
+      // con.query(sql, function (err, result) {
       //   if (err) throw err;
       //   console.log("Projects Table created");
       // });
@@ -124,7 +122,7 @@ app.post('/login', function (req, res) {
       if(result && result.length > 0) {
           user = result[0];
           console.log(user);
-         
+
 
           bcrypt.compare(password, user.password, function(err, response) {
               if(response) {
@@ -235,34 +233,47 @@ app.get('/projects', function (req, res) {
 })
 
 app.get('/project/:projectId', function (req, res) {
-   
-    var sql = "SELECT * FROM projects WHERE id = " + req.params.projectId;
+
+    var sql = "SELECT * FROM projects WHERE project_id = " + req.params.projectId;
     connection.query(sql, function (err, result) {
       if(err) {
         listener(false);
         console.log("errored out " + err);
         return;
       } else {
-         res.send(result[0]);
+         console.log('result', result[0])
+         res.send(result);
          console.log("Projects retrieved " + result + " with err " + err + " where query was " + sql);
       }
     });
 })
 
 app.post('/project', function (req, res) {
-    var title = req.body.title;
-    var description = req.body.description;
-    var email = req.body.email;
+    var user = req.body.userId;
+    var projectName = req.body.project.projectName;
+    var projectDescription = req.body.project.projectDescription;
+    var programSelect = req.body.project.programSelect;
+    var softwareSkill = req.body.project.softwareSkill;
+    var firmwareSkills = req.body.firmwareSkills;
+    var mechanicalSkills = req.body.mechanicalSkills;
+    var electricalSkills = req.body.electricalSkills;
+    var dataSkills = req.body.dataSkills;
+    var designSkills = req.body.designSkills;
 
-    var sql = "INSERT INTO projects (creator_email, title, description) VALUES ('" + email + "', '" + title + "','" + description + "'');";
+
+    var sql = "INSERT INTO projects (title, description, user_id) VALUES ('" + projectName + "', '" + projectDescription + "', '" + user + "');";
+    console.log("Request made:  " + sql);
+
     connection.query(sql, function (err, result) {
       console.log("Project added " + result + " with err " + err);
+      console.log('result', result);
+      res.send(result);
     });
 })
 
 
 app.get('search/project/:query', function (req, res) {
-   
+
     var sql = "SELECT * FROM projects WHERE CONTAINS(description," + req.params.query + ")";
     connection.query(sql, function (err, result) {
       if(err) {
@@ -293,3 +304,5 @@ function validateCredentials(user, password){
       return res
   });
 }
+
+module.export = app;
