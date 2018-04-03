@@ -185,3 +185,47 @@ header.inputSection h1 {
   background: url("../img/window-close.png") no-repeat center center;
   opacity:0.5;
 }
+
+
+.profileHeader{
+  margin-top: 50px;
+}
+.profileName{
+
+}
+.profileDescription{
+padding-top: 15px;
+}
+
+.editProfileHeader{
+  position:absolute;
+  top:4px;
+  right:30px;
+  font-size:30px;
+  color: #7DBBE6;
+}
+
+.listHeader{
+  color:#7DBBE6;
+}
+
+.myProjectName{
+  color:#7DBBE6;
+}
+.secondaryText{
+  color: #979797;
+}
+
+.myList{
+  text-align: left;
+}
+
+.fa-minus-circle{
+  opacity:0.8;
+}
+.myIcon{
+  position:absolute;
+  right:10px;
+  top: 17px;
+  cursor:pointer;
+}

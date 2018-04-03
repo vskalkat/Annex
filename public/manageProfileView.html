@@ -45,32 +45,117 @@
     </nav>
 
 
-    <!-- Input Section -->
-      <div class="container" >
+    <!-- Header Section
+      <div class="container headerSection" style="border:solid 2px red;">
         <div class="row">
           <div style="margin:auto;">
             <ul class="list-group projectsList">
-              <a style="text-decoration:none;" href="#projectModal" rel="modal:open">
-                <li class="list-group-item projectItem">
-                  <h3 class="projectTitle">Project Title</h3>
-                  <p class="projectDescription">
-                    Summary of project. Character limit of 200?
-                  </p>
-                </li>
-              </a>
+              <li class="list-group-item projectItem">
+                <h3 class="projectTitle">Student Name</h3>
+                <div class="radio">
+                  <label><input type="radio" name="optradio">Looking for a project!</label>
+                </div>
+                <div class="radio">
+                  <label><input type="radio" name="optradio">Looking for a team!</label>
+                </div>
+                <p class="projectDescription">
+                  Profile summary of student
+                </p>
+                <a class="editProfileHeader" style="text-decoration:none;" href="#projectModal" rel="modal:open"><i class="fa fa-edit"></i></a>
+              </li>
             </ul>
           </div>
         </div>
       </div>
-
-
-      <!-- Modal Window -->
+-->
+      <!-- Edit header modal Window
       <div id="projectModal" class="modal">
-        <h3 class="projectTitle">Project Title</h3>
+        <h3 class="projectTitle">Student Name</h3>
         <p class="projectDescription">
-          Full Details of the project go here.
+          Profile summary of student
         </p>
       </div>
+-->
+
+
+<!-- Page Content -->
+<div class="container">
+
+  <!-- Header -->
+  <header class="jumbotron my-4" style="position:relative;">
+    <h1 class="display-4">User Name</h1>
+      <label><input type="radio" name="optradio"> Looking for a project </label>
+      <label><input type="radio" name="optradio" style="margin-left:15px;"> Looking for a team </label>
+    <p class="lead secondaryText">Profile summary description.</p>
+    <a class="editProfileHeader sectionIcon" style="text-decoration:none;" href="#headerModal" rel="modal:open"><i class="fa fa-edit" style="color:#979797;"></i></a>
+  </header>
+
+<!-- Edit header modal Window-->
+  <div id="headerModal" class="modal">
+    User Name: <input id="editUsername" type="text" class="form-control form-control-lg" placeholder="User Name">
+    Summary: <input id="editProfileDescription" type="text" class="form-control form-control-lg" placeholder="Profile summary description.">
+  </div>
+
+
+
+  <!-- Skills Section -->
+  <div class="row text-center">
+
+    <div class="col-lg-4 myList mySkills">
+      <ul class="list-group mySkillsList">
+        <li class="list-group-item listHeader"><h5>Skills</h5></li>
+        <li class="list-group-item secondaryText">
+          Skill 1
+          <i class="fa fa-minus-circle myIcon"></i>
+        </li>
+        <li class="list-group-item secondaryText">
+          Skill 2
+          <i class="fa fa-minus-circle myIcon"></i>
+        </li>
+      </ul>
+      <div class="input-group" style="margin-top:10px;">
+         <input type="text" id="addSkillField" class="form-control" placeholder="Add skill...">
+         <span class="input-group-btn">
+              <button class="btn btn-secondary btn-md addSkillBtn" type="button" style="margin-left:5px;"> Add </button>
+         </span>
+      </div>
+    </div>
+
+
+    <div class="col-lg-8 myList myProjectIdeas">
+      <ul class="list-group">
+        <li class="list-group-item listHeader"><h5>Project Ideas</h5></li>
+        <li class="list-group-item">
+          <h6 class="myProjectName">Project1</h6>
+          <p class="myProjectDescription secondaryText">Description of project</p>
+        </li>
+        <li class="list-group-item">
+          <h6 class="myProjectName">Project2</h6>
+          <p class="myProjectDescription secondaryText">Description of project</p>
+        </li>
+      </ul>
+      <div class="input-group" style="margin-top:10px;">
+         <input type="text" id="addProjectField" class="form-control" placeholder="New Project Name...">
+         <input type="text" id="addProjectField" class="form-control" placeholder="New Project Name...">
+         <span class="input-group-btn">
+              <button class="btn btn-secondary btn-md addProjectBtn" type="button" style="margin-left:5px;"> Add </button>
+         </span>
+      </div>
+    </div>
+
+
+
+  </div>
+  <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+
+
+
+
+
 
 
   </body>
