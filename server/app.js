@@ -213,7 +213,7 @@ app.post('/signUp', function (req, res) {
   }
 })
 
-app.get('/projects', function (req, res) {
+app.get('/projects', function (req, res, listener) {
 
     var sql = "SELECT * FROM projects";
     connection.query(sql, function (err, result) {
@@ -229,7 +229,7 @@ app.get('/projects', function (req, res) {
     });
 })
 
-app.get('/project/:projectId', function (req, res) {
+app.get('/project/:projectId', function (req, res, listener) {
 
     var sql = "SELECT * FROM projects WHERE project_id = " +
       req.params.projectId;
@@ -242,6 +242,24 @@ app.get('/project/:projectId', function (req, res) {
          console.log('result', result[0])
          res.send(result[0]);
          console.log("Projects retrieved " + result + " with err " +
+         err + " where query was " + sql);
+      }
+    });
+});
+
+app.get('/projects/user/:userId', function (req, res, listener) {
+
+    var sql = "SELECT * FROM projects WHERE user_id = " +
+      req.params.userId;
+    connection.query(sql, function (err, results) {
+      if(err) {
+        listener(false);
+        console.log("errored out " + err);
+        return;
+      } else {
+         console.log('result', results)
+         res.send(results);
+         console.log("Projects retrieved " + results + " with err " +
          err + " where query was " + sql);
       }
     });
@@ -270,36 +288,54 @@ app.post('/project', function (req, res) {
     });
 })
 
+app.get('/projects/delete/:projectId', function (req, res, listener) {
 
-app.get('search/project/:query', function (req, res) {
-    var sql = "SELECT * FROM projects WHERE description LIKE '%" +
-      req.params.query + "%' or title LIKE '%" + req.params.query + "%';";
+    var sql = "DELETE * FROM projects WHERE project_id = " +
+      req.params.projectId;
     connection.query(sql, function (err, result) {
       if(err) {
         listener(false);
         console.log("errored out " + err);
         return;
       } else {
-         res.send(result[0]);
-         console.log("Search retreived " + result + " with err " +
+         res.send(result);
+         console.log("Expression deleted " + result + " with err " +
+          err + " where query was " + sql);
+      }
+    });
+})
+
+app.get('/search/project/:query', function (req, res, listener) {
+    var sql = "SELECT * FROM projects WHERE description LIKE '%" +
+      req.params.query + "%' or title LIKE '%" + req.params.query + "%';";
+    connection.query(sql, function (err, results) {
+      if(err) {
+        listener(false);
+        console.log("errored out " + err);
+        return;
+      } else {
+         console.log(results);
+         res.send(results);
+         console.log("Search retreived " + results + " with err " +
          err + " where query was " + sql);
       }
     });
 })
 
-app.get('search/user/:query', function (req, res) {
+app.get('/search/user/:query', function (req, res, listener) {
     var sql = "SELECT * FROM users WHERE name LIKE '%" +
       req.params.query + "%' or email LIKE '%" +
       req.params.query + "%' or description LIKE '%" +
       req.params.query + "%';";
-    connection.query(sql, function (err, result) {
+    connection.query(sql, function (err, results) {
       if(err) {
         listener(false);
         console.log("errored out " + err);
         return;
       } else {
-         res.send(result[0]);
-         console.log("Search retreived " + result + " with err " +
+         console.log(results);
+         res.send(results);
+         console.log("Search retreived " + results + " with err " +
          err + " where query was " + sql);
       }
     });

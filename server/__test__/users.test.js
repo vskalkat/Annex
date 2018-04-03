@@ -27,7 +27,7 @@ afterAll((done) => {
   connection.query(`DELETE FROM users WHERE email = 'shenchenlei@gmail.com';`);
 });
 
-test('test post /signup', (done) => {
+test('test POST /signup', (done) => {
   request.post({
     url: "http://localhost:8042/signup",
     body:  {
@@ -55,7 +55,7 @@ test('test post /signup', (done) => {
   });
 });
 
-test('test post /login', (done) => {
+test('test POST /login', (done) => {
   request.post({
     url: "http://localhost:8042/login",
     body:  {
