@@ -248,7 +248,6 @@ app.post('/project', function (req, res) {
     var dataSkills = req.body.dataSkills;
     var designSkills = req.body.designSkills;
 
-
     var sql = "INSERT INTO projects (title, description, user_id) VALUES ('" + projectName + "', '" + projectDescription + "', '" + user + "');";
     console.log("Request made:  " + sql);
 
