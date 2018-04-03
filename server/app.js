@@ -34,7 +34,8 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 app.get('/', (req, res) => { //anonymous function
-  console.log("GET request received for root"); // file:///Users/saifkhan/Documents/3B%20Notes/SYDE322/Annex/public/findProjectsView.html
+  console.log("GET request received for root");
+  // file:///Users/saifkhan/Documents/3B%20Notes/SYDE322/Annex/public/findProjectsView.html
   res.sendfile(__dirname + '/public/loginView.html');
 })
 
@@ -46,9 +47,11 @@ app.get('/findProjects', (req, res) => { //anonymous function
 const saltRounds = 10;
 
 function addUser(user, connection, cb) {
-    var sql = "INSERT INTO users (email, password, fav_teacher) VALUES ('"+ user.email + "', '" + user.password + "', '" + user.fav_teacher + "');";
+    var sql = "INSERT INTO users (email, password, fav_teacher) VALUES ('"+
+    user.email + "', '" + user.password + "', '" + user.fav_teacher + "');";
     connection.query(sql, function (err, result) {
-      console.log("Banchot added " + result + " result : " + sql + " with err " + err);
+      console.log(
+        "Banchot added " + result + " result : " + sql + " with err " + err);
       cb(result);
     });
 }
@@ -63,13 +66,15 @@ function retrieveUser(email, connection, listener) {
         return;
       } else {
          listener(result);
-         console.log("User successfully retreived " + result + " with err " + err + " where query was " + sql);
+         console.log("User successfully retreived " + result + " with err " +
+          err + " where query was " + sql);
       }
     });
 }
 
 function createDefaultUsers(connection) {
-    var sql = "INSERT INTO users (email, password) VALUES ('banchot@hotmail.com', 'password', 'igor');";
+    var sql =
+    "INSERT INTO users (email, password) VALUES ('banchot@hotmail.com', 'password', 'igor');";
     connection.query(sql, function (err, result) {
       console.log("Banchot added " + result);
     });
@@ -112,7 +117,8 @@ app.post('/login', function (req, res) {
 
           bcrypt.compare(password, user.password, function(err, response) {
               if(response) {
-                const token = jwt.sign({}, 'my_secret_key', {expiresIn: '60000'});
+                const token = jwt.sign({}, 'my_secret_key',
+                  {expiresIn: '60000'});
                 var contentToSend = {
                   "token" : token
                 };
@@ -120,7 +126,8 @@ app.post('/login', function (req, res) {
                 res.send(JSON.stringify(contentToSend));
                 console.log("login succeeded");
               } else {
-                var contentToSend = {"message" : "login failed, wrong password"};
+                var contentToSend = {
+                  "message" : "login failed, wrong password" };
                 res.send(JSON.stringify(contentToSend));
               }
 
@@ -137,18 +144,19 @@ app.post('/login', function (req, res) {
 //do stuff that requires authentication privlidges here
 app.get('/protected', ensureToken, function(req, res){
   var tokenVerified = false;
-  jwt.verify(req.headers["authorization"], 'my_secret_key', function(err, data){
-    if(err){
-      console.log("Error in token verification:" + err);
-      tokenVerified = false;
-      res.sendStatus(403);
-    } else {
-      console.log('token verification: SUCCESS.');
-      tokenVerified = true;
-      res.json({
-        tokenVerified : tokenVerified
-      });
-    }
+  jwt.verify(req.headers["authorization"], 'my_secret_key',
+    function(err, data){
+      if(err){
+        console.log("Error in token verification:" + err);
+        tokenVerified = false;
+        res.sendStatus(403);
+      } else {
+        console.log('token verification: SUCCESS.');
+        tokenVerified = true;
+        res.json({
+          tokenVerified : tokenVerified
+        });
+      }
   })
 })
 
@@ -215,14 +223,16 @@ app.get('/projects', function (req, res) {
         return;
       } else {
          res.send(result);
-         console.log("Expression retrieved " + result + " with err " + err + " where query was " + sql);
+         console.log("Expression retrieved " + result + " with err " +
+          err + " where query was " + sql);
       }
     });
 })
 
 app.get('/project/:projectId', function (req, res) {
 
-    var sql = "SELECT * FROM projects WHERE project_id = " + req.params.projectId;
+    var sql = "SELECT * FROM projects WHERE project_id = " +
+      req.params.projectId;
     connection.query(sql, function (err, result) {
       if(err) {
         listener(false);
@@ -231,7 +241,8 @@ app.get('/project/:projectId', function (req, res) {
       } else {
          console.log('result', result[0])
          res.send(result[0]);
-         console.log("Projects retrieved " + result + " with err " + err + " where query was " + sql);
+         console.log("Projects retrieved " + result + " with err " +
+         err + " where query was " + sql);
       }
     });
 })
@@ -248,7 +259,8 @@ app.post('/project', function (req, res) {
     var dataSkills = req.body.dataSkills;
     var designSkills = req.body.designSkills;
 
-    var sql = "INSERT INTO projects (title, description, user_id) VALUES ('" + projectName + "', '" + projectDescription + "', '" + user + "');";
+    var sql = "INSERT INTO projects (title, description, user_id) VALUES ('" +
+    projectName + "', '" + projectDescription + "', '" + user + "');";
     console.log("Request made:  " + sql);
 
     connection.query(sql, function (err, result) {
@@ -260,8 +272,8 @@ app.post('/project', function (req, res) {
 
 
 app.get('search/project/:query', function (req, res) {
-
-    var sql = "SELECT * FROM projects WHERE CONTAINS(description," + req.params.query + ")";
+    var sql = "SELECT * FROM projects WHERE description LIKE '%" +
+      req.params.query + "%' or title LIKE '%" + req.params.query + "%';";
     connection.query(sql, function (err, result) {
       if(err) {
         listener(false);
@@ -269,7 +281,26 @@ app.get('search/project/:query', function (req, res) {
         return;
       } else {
          res.send(result[0]);
-         console.log("Search retreived " + result + " with err " + err + " where query was " + sql);
+         console.log("Search retreived " + result + " with err " +
+         err + " where query was " + sql);
+      }
+    });
+})
+
+app.get('search/user/:query', function (req, res) {
+    var sql = "SELECT * FROM users WHERE name LIKE '%" +
+      req.params.query + "%' or email LIKE '%" +
+      req.params.query + "%' or description LIKE '%" +
+      req.params.query + "%';";
+    connection.query(sql, function (err, result) {
+      if(err) {
+        listener(false);
+        console.log("errored out " + err);
+        return;
+      } else {
+         res.send(result[0]);
+         console.log("Search retreived " + result + " with err " +
+         err + " where query was " + sql);
       }
     });
 })
