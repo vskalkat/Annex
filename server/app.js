@@ -45,10 +45,11 @@ app.get('/findProjects', (req, res) => { //anonymous function
 
 const saltRounds = 10;
 
-function addUser(user, connection) {
+function addUser(user, connection, cb) {
     var sql = "INSERT INTO users (email, password, fav_teacher) VALUES ('"+ user.email + "', '" + user.password + "', '" + user.fav_teacher + "');";
     connection.query(sql, function (err, result) {
       console.log("Banchot added " + result + " result : " + sql + " with err " + err);
+      cb(result);
     });
 }
 
@@ -180,7 +181,7 @@ app.post('/signUp', function (req, res) {
     var contentToSend = {
       "token" : token
     };
-    res.send(JSON.stringify(contentToSend)); // this is a 200
+    // res.send(JSON.stringify(contentToSend)); // this is a 200
     console.log("SignUp POST request hit! 1 success ");
 
     //add new user to database
@@ -190,12 +191,16 @@ app.post('/signUp', function (req, res) {
           bcrypt.hash(fav_teacher, salt, function(err, fav_enc) {
             user.password = hash;
             user.fav_teacher = fav_enc;
-            addUser(user, connection);
+            addUser(user, connection, (data) => {
+              console.log('sending data!', data);
+              res.send(data);
+            });
           });
       });
     });
 
   } else {
+    console.log('not valid email');
     res.sendStatus(403);
   }
 })
