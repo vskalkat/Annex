@@ -45,7 +45,7 @@ app.get('/findProjects', (req, res) => { //anonymous function
 const saltRounds = 10;
 
 function addUser(user, connection) {
-    var sql = "INSERT INTO users (email, password, is_premium, fav_teacher) VALUES ('"+ user.email + "', '" + user.password + "', " + user.is_premium + ", '" + user.fav_teacher + "');";
+    var sql = "INSERT INTO users (email, password, fav_teacher) VALUES ('"+ user.email + "', '" + user.password + "', '" + user.fav_teacher + "');";
     connection.query(sql, function (err, result) {
       console.log("Banchot added " + result + " result : " + sql + " with err " + err);
     });
@@ -261,7 +261,7 @@ app.post('/project', function (req, res) {
     var designSkills = req.body.designSkills;
   
 
-    var sql = "INSERT INTO projects (title, description) VALUES ('" + projectName + "', '" + projectDescription + "');";
+    var sql = "INSERT INTO projects (title, description, user_id) VALUES ('" + projectName + "', '" + projectDescription + "'," + 12 +");";
     console.log("Request made:  " + sql);
 
     connection.query(sql, function (err, result) {
