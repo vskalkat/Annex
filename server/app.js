@@ -46,7 +46,7 @@ app.get('/findProjects', (req, res) => { //anonymous function
 const saltRounds = 10;
 
 function addUser(user, connection) {
-    var sql = "INSERT INTO users (email, password, is_premium, fav_teacher) VALUES ('"+ user.email + "', '" + user.password + "', " + user.is_premium + ", '" + user.fav_teacher + "');";
+    var sql = "INSERT INTO users (email, password, fav_teacher) VALUES ('"+ user.email + "', '" + user.password + "', '" + user.fav_teacher + "');";
     connection.query(sql, function (err, result) {
       console.log("Banchot added " + result + " result : " + sql + " with err " + err);
     });
@@ -68,7 +68,7 @@ function retrieveUser(email, connection, listener) {
 }
 
 function createDefaultUsers(connection) {
-    var sql = "INSERT INTO users (email, password, is_premium) VALUES ('banchot@hotmail.com', 'password', true, 'igor');";
+    var sql = "INSERT INTO users (email, password) VALUES ('banchot@hotmail.com', 'password', 'igor');";
     connection.query(sql, function (err, result) {
       console.log("Banchot added " + result);
     });
@@ -98,20 +98,6 @@ function createSchema(con) {
         if (err) throw err;
         console.log("Interests created");
       });
-
-      // var sql = "CREATE TABLE IF NOT EXISTS users (email VARCHAR(255) PRIMARY KEY, password VARCHAR(255), is_premium BOOLEAN, fav_teacher VARCHAR(255))";
-      // con.query(sql, function (err, result) {
-      //   if (err) throw err;
-      //   console.log("User Table created");
-      // });
-
-      // sql = "CREATE TABLE IF NOT EXISTS projects (id INT PRIMARY KEY AUTO_INCREMENT, creator_email VARCHAR(255), title VARCHAR(255), description VARCHAR(255))";
-      // con.query(sql, function (err, result) {
-      //   if (err) throw err;
-      //   console.log("Projects Table created");
-      // });
-
-      // createDefaultUsers(con);
 }
 
 app.post('/login', function (req, res) {
@@ -122,7 +108,6 @@ app.post('/login', function (req, res) {
       if(result && result.length > 0) {
           user = result[0];
           console.log(user);
-
 
           bcrypt.compare(password, user.password, function(err, response) {
               if(response) {
@@ -146,7 +131,7 @@ app.post('/login', function (req, res) {
       }
   });
 
-})
+});
 
 //do stuff that requires authentication privlidges here
 app.get('/protected', ensureToken, function(req, res){
@@ -182,13 +167,11 @@ function ensureToken(req, res, next){
 app.post('/signUp', function (req, res) {
   var email = req.body.userCredentials.email;
   var password = req.body.userCredentials.password;
-  var isPremiumRegistration = req.body.userCredentials.isPremiumRegistration;
   var fav_teacher = req.body.userCredentials.fav_teacher;
 
   var user = {
     email: email,
     password: password,
-    is_premium: isPremiumRegistration,
     fav_teacher: fav_teacher
   };
 
@@ -292,7 +275,7 @@ function isValidEmail(email){
 }
 
 var server = app.listen(8042, function(){
-  var port = server.address().port
+  var port = server.address().port;
   console.log('Node.js server running at localhost:%s', port)
 })
 
