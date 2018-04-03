@@ -6,9 +6,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "test": "jest"
+    "test": "jest",
+    "eject": "react-scripts eject"
   },
   "repository": {
     "type": "git",
@@ -21,22 +20,22 @@
   },
   "homepage": "https://github.com/vskalkat/Annex#readme",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.15.5",
-    "morgan": "~1.9.0",
-    "mysql2": "^1.5.3",
-    "pug": "2.0.0-beta11",
     "fs": "^0.0.1-security",
     "jsonwebtoken": "^8.2.0",
+    "morgan": "~1.9.0",
     "mysql": "^2.15.0",
+    "mysql2": "^1.5.3",
+    "pug": "2.0.0-beta11",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.1",
     "sequelize": "^4.37.4",
-    "serve-favicon": "~2.4.5",
-    "sequelize": "^4.37.4"
+    "serve-favicon": "~2.4.5"
   },
   "proxy": "http://localhost:8080"
 }

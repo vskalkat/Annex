@@ -222,10 +222,18 @@ padding-top: 15px;
 
 .fa-minus-circle{
   opacity:0.8;
+  color:#979797;
 }
 .myIcon{
   position:absolute;
   right:10px;
   top: 17px;
   cursor:pointer;
+}
+
+.newProjectBox{
+  background-color:white;
+  border-radius:2px;
+  padding: .75rem 1.25rem;
+  border: 1px solid rgba(0,0,0,.125);
 }
