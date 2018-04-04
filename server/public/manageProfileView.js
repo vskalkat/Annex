@@ -1,5 +1,21 @@
 $(document).ready(function(){
 
+  var request = $.ajax({
+       url: "/projects/user/" + window.localStorage.getItem('user'),
+       type: "GET",
+       dataType: "json",
+       contentType: 'application/json; charset=utf-8',
+       data: {}
+     }).done(function(data) {
+       console.log("data got");
+       console.log(data);
+       for (var i = data.length - 1; i >= 0; i--) {
+         $('#projectslist').append("<li class='list-group-item'><h6 class='myProjectName'>"+data[i].title+"</h6><p class='myProjectDescription secondaryText'>"+data[i].description+"</p><i class='fa fa-minus-circle myIcon'></i></li>");
+       }
+     }).fail(function( data ) {
+       console.log("faaiiluuure");
+     });
+
 
   $('.fa-minus-circle').on('click', function(){
     $(this).parent().fadeTo( "normal", 0, function(){
@@ -67,7 +83,7 @@ $(document).ready(function(){
           userId : window.localStorage.getItem('user')})
       }).done(function(data) {
            console.log("project posted!" );
-           window.location.href = 'http://localhost:8042/project';
+           window.location.href = 'http://localhost:8042/manageProfileView.html';
       }).fail(function( data ) {
            console.log("project up failed" );
       });
