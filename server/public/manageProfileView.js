@@ -64,7 +64,7 @@ $(document).ready(function(){
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify({
           project : project,
-          user_id : window.localStorage.getItem('user')})
+          userId : window.localStorage.getItem('user')})
       }).done(function(data) {
            console.log("project posted!" );
            window.location.href = 'http://localhost:8042/project';
