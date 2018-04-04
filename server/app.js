@@ -22,9 +22,9 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'root',
+  password : 'pakistan',
   database : 'my_db',
-  port     : '5432'
+  port     : '3306'
 });
 
 createSchema(connection);
