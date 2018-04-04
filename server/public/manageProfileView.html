@@ -45,32 +45,132 @@
     </nav>
 
 
-    <!-- Input Section -->
-      <div class="container" >
-        <div class="row">
-          <div style="margin:auto;">
-            <ul class="list-group projectsList">
-              <a style="text-decoration:none;" href="#projectModal" rel="modal:open">
-                <li class="list-group-item projectItem">
-                  <h3 class="projectTitle">Project Title</h3>
-                  <p class="projectDescription">
-                    Summary of project. Character limit of 200?
-                  </p>
-                </li>
-              </a>
-            </ul>
-          </div>
+<!-- Page Content -->
+<div class="container">
+
+  <!-- Header -->
+  <header class="jumbotron my-4" style="position:relative;">
+    <h1 class="display-4">User Name</h1>
+      <label><input type="radio" name="optradio"> Looking for a project </label>
+      <label><input type="radio" name="optradio" style="margin-left:15px;"> Looking for a team </label>
+    <p class="lead secondaryText">Profile summary description.</p>
+    <a class="editProfileHeader sectionIcon" style="text-decoration:none;" href="#headerModal" rel="modal:open"><i class="fa fa-edit" style="color:#979797;"></i></a>
+  </header>
+
+<!-- Edit header modal Window-->
+  <div id="headerModal" class="modal">
+    User Name <input id="editUsername" type="text" class="form-control form-control-lg" placeholder="User Name" style="margin-bottom:15px;">
+    Summary <input id="editProfileDescription" type="text" class="form-control form-control-lg" placeholder="Profile summary description." style="margin-bottom:15px;">
+    <button class="btn btn-secondary btn-md headerSave" type="button"> Save </button>
+  </div>
+
+
+
+  <!-- Skills Section -->
+  <div class="row text-center">
+
+    <div class="col-lg-4 myList mySkills">
+      <ul class="list-group mySkillsList">
+        <li class="list-group-item listHeader"><h5>Skills</h5></li>
+        <li class="list-group-item secondaryText">
+          Skill 1
+          <i class="fa fa-minus-circle myIcon"></i>
+        </li>
+        <li class="list-group-item secondaryText">
+          Skill 2
+          <i class="fa fa-minus-circle myIcon"></i>
+        </li>
+      </ul>
+      <div class="input-group" style="margin-top:10px;">
+         <input type="text" id="addSkillField" class="form-control" placeholder="Add skill...">
+         <span class="input-group-btn">
+              <button class="btn btn-secondary btn-md addSkillBtn" type="button" style="margin-left:5px;"> Add </button>
+         </span>
+      </div>
+    </div>
+
+
+    <div class="col-lg-8 myList myProjectIdeas">
+      <ul class="list-group">
+        <li class="list-group-item listHeader"><h5>Project Ideas</h5></li>
+        <li class="list-group-item">
+          <h6 class="myProjectName">Project1</h6>
+          <p class="myProjectDescription secondaryText">Description of project</p>
+          <i class="fa fa-minus-circle myIcon"></i>
+        </li>
+        <li class="list-group-item">
+          <h6 class="myProjectName">Project2</h6>
+          <p class="myProjectDescription secondaryText">Description of project</p>
+          <i class="fa fa-minus-circle myIcon"></i>
+        </li>
+      </ul>
+      <div>
+        <a href="#projectModal" rel="modal:open"> <button type="button" class="btn btn-secondary newProjectButton" style="margin-top:10px;">New Project</button></a>
+
+
+    </div>
+
+
+
+  </div>
+  <!-- /.row -->
+
+
+  <!-- Modal Window -->
+  <div id="projectModal" class="modal">
+    <h3 class="projectTitle">New Project</h3>
+    <div class="row" style="padding-left:15px; padding-right:15px;">
+        <strong style="margin-right:10px;">Name</strong>
+        <input type="text" id="addProjectNameField" class="form-control" placeholder="New Project Name...">
+    </div>
+    <div class="row" style="padding-left:15px; padding-right:15px; margin-top:15px;">
+      <strong style="margin-right:10px;">Description</strong>
+      <input type="text" id="addProjectDescriptionField" class="form-control" placeholder="Description...">
+    </div>
+    <div class="row" style="padding-left:15px; passing-right:15px; margin-top:15px;">
+      <strong style="margin-right: 10px;">Program Type</strong>
+      </br>
+      <select class="program" style="display:block;">
+        <option value="syde">SYDE</option>
+        <option value="bme">BME</option>
+        <option value="tron">TRON</option>
+        <option value="ele">ELE</option>
+        <option value="comp">COMP</option>
+        <option value="cive">CIVE</option>
+        <option value="mng">MGNT</option>
+      </select>
+    </div>
+    <strong style="display:block; margin-top:15px;">Skills Required</strong>
+    <div class="row">
+      <div class="col-sm-4 col-sm-offset-1">
+        <div class="list-group" id="projectSkillsList">
+          <a class="list-group-item" id="softwareSkill"> Software <input type="checkbox" class="pull-right"></a>
+          <a class="list-group-item" id="firmwareSkills"> Firmware <input type="checkbox" class="pull-right"></a>
+          <a class="list-group-item" id="mechanicalSkills"> Mechanical <input type="checkbox" class="pull-right"></a>
+          <a class="list-group-item" id="electricalSkills"> Electrical <input type="checkbox" class="pull-right"></a>
+          <a class="list-group-item" id="dataSkills"> Data Science <input type="checkbox" class="pull-right"></a>
+          <a class="list-group-item" id="designSkills"> Design <input type="checkbox" class="pull-right"></a>
         </div>
       </div>
+    </div>
+    <div class="row" style="padding-left:15px; passing-right:15px; margin-top:25px;">
+      <button id="submitBtn" type="button" class="btn btn-secondary createProjectButton">Create!</button>
+    </div>
+  </div>
+
+  </div>
 
 
-      <!-- Modal Window -->
-      <div id="projectModal" class="modal">
-        <h3 class="projectTitle">Project Title</h3>
-        <p class="projectDescription">
-          Full Details of the project go here.
-        </p>
-      </div>
+
+
+</div>
+<!-- /.container -->
+
+
+
+
+
+
 
 
   </body>
