@@ -33,6 +33,7 @@ $(document).ready(function(){
              }).done(function(data) {
                console.log("data: " + data.tokenVerified);
                if(data.tokenVerified) {
+                 window.localStorage.setItem('user', data.user);
                  window.location.href = 'http://localhost:8042/findProjects';
                }
              }).fail(function( data ) {
