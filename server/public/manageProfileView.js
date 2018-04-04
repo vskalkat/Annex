@@ -32,8 +32,8 @@ $(document).ready(function(){
   $("#submitBtn").click(function(){
     console.log("submitBtn button clicked!" );
 
-    var projectName = $("#projectName").val();
-    var projectDescription = $("#projectDescription").val();
+    var projectName = $("#addProjectNameField").val();
+    var projectDescription = $("#addProjectDescriptionField").val();
     var programSelect = $("#programSelect option:selected").text();
 
     var softwareSkill = $('#softwareSkill').prop( "checked" );
