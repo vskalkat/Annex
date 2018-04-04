@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+<<<<<<< HEAD
   var email = window.localStorage.getItem("email");
   var favTeacher = window.localStorage.getItem("fav_teacher");
   console.log("retrieved");
@@ -10,6 +11,23 @@ $(document).ready(function(){
   $('.description').text(favTeacher);
   $('#profileUsername').text(email);
   $('#description').text(favTeacher);
+=======
+  var request = $.ajax({
+       url: "/projects/user/" + window.localStorage.getItem('user'),
+       type: "GET",
+       dataType: "json",
+       contentType: 'application/json; charset=utf-8',
+       data: {}
+     }).done(function(data) {
+       console.log("data got");
+       console.log(data);
+       for (var i = data.length - 1; i >= 0; i--) {
+         $('#projectslist').append("<li class='list-group-item'><h6 class='myProjectName'>"+data[i].title+"</h6><p class='myProjectDescription secondaryText'>"+data[i].description+"</p><i class='fa fa-minus-circle myIcon'></i></li>");
+       }
+     }).fail(function( data ) {
+       console.log("faaiiluuure");
+     });
+>>>>>>> 5ed06e4f5976bbbb68b4bfae5e8e369e98674e34
 
 
   $('.fa-minus-circle').on('click', function(){
@@ -78,7 +96,7 @@ $(document).ready(function(){
           userId : window.localStorage.getItem('user')})
       }).done(function(data) {
            console.log("project posted!" );
-           window.location.href = 'http://localhost:8042/project';
+           window.location.href = 'http://localhost:8042/manageProfileView.html';
       }).fail(function( data ) {
            console.log("project up failed" );
       });
