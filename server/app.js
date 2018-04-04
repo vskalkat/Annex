@@ -22,7 +22,7 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'pass',
+  password : 'pakistan',
   database : 'my_db',
   port     : '3306'
 });
