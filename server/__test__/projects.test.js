@@ -15,9 +15,6 @@ const connection = mysql.createConnection({
 
 beforeAll((done) => {
   let query = `
-  insert into users(user_id, name, email, password)
-  values(1, 'admin', 'shenchenlei@gmail.com', 'abc');
-
   insert into projects(project_id, title, description, user_id)
   values(1, 'project1', 'test project 1', 1);
 
@@ -35,9 +32,7 @@ beforeAll((done) => {
 
 afterAll((done) => {
   connection.query(
-    `DELETE FROM users
-     WHERE email = 'shenchenlei@gmail.com';
-     DELETE FROM projects
+    `DELETE FROM projects
      WHERE title = 'project1' or title = 'project2' or title = 'project3';`);
 });
 
@@ -57,7 +52,7 @@ test('test get /project/:projectId', () => {
     request.get("http://localhost:8042/project/2",
       { json: true }, (err, res, body) => {
         if (err) { console.log(err); }
-        console.log('body', res.body);
+        console.log('body', body);
         resolve(body);
       });
   }).then((body) => {
@@ -73,7 +68,7 @@ test('test post /project', (done) => {
           projectName : 'project4',
           projectDescription : 'test project 4'
         },
-        userId : 1,
+        userId : 1
       },
     json:  true
   }, (err, res, body) => {

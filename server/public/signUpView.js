@@ -13,7 +13,7 @@ $(document).ready(function(){
       "email" : email,
       "password" : password,
       "isPremiumRegistration" : isPremiumRegistration,
-      "favTeacher" : favTeacher
+      "fav_teacher" : favTeacher
     };
 
     console.log(userCredentials);
