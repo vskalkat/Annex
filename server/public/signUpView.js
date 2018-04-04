@@ -27,7 +27,11 @@ $(document).ready(function(){
       }).done(function(data) {
            console.log("login responsed!" );
            window.location.href = 'http://localhost:8042/findProjects';
+
            document.cookie = data.token;
+           window.localStorage.setItem('email', email);
+           window.localStorage.setItem('fav_teacher', favTeacher);
+
            console.log("document.cookie after /signup: " + document.cookie);
 
       }).fail(function( data ) {

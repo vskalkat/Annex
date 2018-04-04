@@ -284,7 +284,7 @@ app.post('/project', function (req, res) {
     var designSkills = req.body.designSkills;
 
     var sql = "INSERT INTO projects (title, description, user_id) VALUES ('" +
-    projectName + "', '" + projectDescription + "', '" + user + "');";
+    projectName + "', '" + projectDescription + "', " + 2 + ");";
     console.log("Request made:  " + sql);
 
     connection.query(sql, function (err, result) {

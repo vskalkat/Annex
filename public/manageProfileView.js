@@ -1,5 +1,13 @@
 $(document).ready(function(){
 
+  var email = window.localStorage.getItem("email");
+  var favTeacher = window.localStorage.getItem("fav_teacher");
+  console.log("retrieved");
+  console.log(email);
+  console.log(favTeacher);
+
+  $('#profileUsername').val(email);
+  $('#description').val(favTeacher);
 
   $('.fa-minus-circle').on('click', function(){
     $(this).parent().fadeTo( "normal", 0, function(){

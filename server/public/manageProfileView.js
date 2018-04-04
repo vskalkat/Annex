@@ -1,5 +1,16 @@
 $(document).ready(function(){
 
+  var email = window.localStorage.getItem("email");
+  var favTeacher = window.localStorage.getItem("fav_teacher");
+  console.log("retrieved");
+  console.log(email);
+  console.log(favTeacher);
+
+  $('.profileUsername').text(email);
+  $('.description').text(favTeacher);
+  $('#profileUsername').text(email);
+  $('#description').text(favTeacher);
+
 
   $('.fa-minus-circle').on('click', function(){
     $(this).parent().fadeTo( "normal", 0, function(){
@@ -80,9 +91,6 @@ $(document).ready(function(){
 
 
 
-
-
-
-
+//get user info from db
 
 });
