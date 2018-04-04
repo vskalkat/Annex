@@ -66,7 +66,7 @@ $(document).ready(function(){
         data: JSON.stringify({ project : project })
       }).done(function(data) {
            console.log("project posted!" );
-           window.location.href = 'http://localhost:8042/projects';
+           window.location.href = 'http://localhost:8042/project';
       }).fail(function( data ) {
            console.log("project up failed" );
       });

@@ -36,7 +36,7 @@ afterAll((done) => {
      WHERE title = 'project1' or title = 'project2' or title = 'project3';`);
 });
 
-test('test get /projects', (done) => {
+test('test GET /projects', (done) => {
   request.get("http://localhost:8042/projects",
   { json: true }, (err, res, body) => {
     console.log('body', body);
@@ -46,7 +46,7 @@ test('test get /projects', (done) => {
   });
 });
 
-test('test get /project/:projectId', () => {
+test('test GET /project/:projectId', () => {
   expect.assertions(1);
   return new Promise((resolve, reject) => {
     request.get("http://localhost:8042/project/2",
@@ -60,7 +60,7 @@ test('test get /project/:projectId', () => {
   });
 });
 
-test('test post /project', (done) => {
+test('test POST /project', (done) => {
   request.post({
     url: "http://localhost:8042/project",
     body:  {
