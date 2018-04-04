@@ -43,7 +43,6 @@ $(document).ready(function(){
     var dataSkills = $('#dataSkills').prop( "checked" );
     var designSkills = $('#designSkills').prop( "checked" );
 
-
     project = {
       "projectName" : projectName,
       "projectDescription" : projectDescription,
@@ -63,7 +62,9 @@ $(document).ready(function(){
         type: "POST",
         dataType: "json",
         contentType: 'application/json; charset=utf-8',
-        data: JSON.stringify({ project : project })
+        data: JSON.stringify({
+          project : project,
+          user_id : window.localStorage.getItem('user')})
       }).done(function(data) {
            console.log("project posted!" );
            window.location.href = 'http://localhost:8042/project';

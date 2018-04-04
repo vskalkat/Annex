@@ -22,9 +22,9 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'pass',
+  password : 'root',
   database : 'my_db',
-  port     : '3306'
+  port     : '5432'
 });
 
 createSchema(connection);
@@ -117,7 +117,7 @@ app.post('/login', function (req, res) {
 
           bcrypt.compare(password, user.password, function(err, response) {
               if(response) {
-                const token = jwt.sign({}, 'my_secret_key',
+                const token = jwt.sign({ user : user.user_id }, 'my_secret_key',
                   {expiresIn: '60000'});
                 var contentToSend = {
                   "token" : token
@@ -152,9 +152,11 @@ app.get('/protected', ensureToken, function(req, res){
         res.sendStatus(403);
       } else {
         console.log('token verification: SUCCESS.');
+        console.log(data.user);
         tokenVerified = true;
         res.json({
-          tokenVerified : tokenVerified
+          tokenVerified : tokenVerified,
+          user : data.user
         });
       }
   })
@@ -212,6 +214,10 @@ app.post('/signUp', function (req, res) {
     res.sendStatus(403);
   }
 })
+
+app.get('/currentUser', (req, res) => {
+
+});
 
 app.get('/projects', function (req, res, listener) {
 
