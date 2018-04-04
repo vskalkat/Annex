@@ -22,9 +22,9 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'root',
+  password : 'pass',
   database : 'my_db',
-  port     : '5432'
+  port     : '3306'
 });
 
 createSchema(connection);
@@ -117,6 +117,7 @@ app.post('/login', function (req, res) {
 
           bcrypt.compare(password, user.password, function(err, response) {
               if(response) {
+                console.log('user', user);
                 const token = jwt.sign({ user : user.user_id }, 'my_secret_key',
                   {expiresIn: '60000'});
                 var contentToSend = {
@@ -152,7 +153,7 @@ app.get('/protected', ensureToken, function(req, res){
         res.sendStatus(403);
       } else {
         console.log('token verification: SUCCESS.');
-        console.log(data.user);
+        console.log(data);
         tokenVerified = true;
         res.json({
           tokenVerified : tokenVerified,
@@ -284,7 +285,7 @@ app.post('/project', function (req, res) {
     var designSkills = req.body.designSkills;
 
     var sql = "INSERT INTO projects (title, description, user_id) VALUES ('" +
-    projectName + "', '" + projectDescription + "', " + 2 + ");";
+    projectName + "', '" + projectDescription + "', " + user + ");";
     console.log("Request made:  " + sql);
 
     connection.query(sql, function (err, result) {
